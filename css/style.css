@@ -1,0 +1,222 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a2639; /* Azul oscuro */
+    color: #e0e0e0; /* Gris claro */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    background-color: #2d3b50; /* Azul más claro */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 1000px;
+    margin-bottom: 20px;
+}
+
+.auth-container {
+    max-width: 450px;
+    text-align: center;
+}
+
+.auth-container h3 {
+    color: #4fc3f7; /* Azul claro brillante */
+    margin-bottom: 20px;
+}
+
+.auth-container div {
+    margin-bottom: 18px;
+    text-align: left;
+}
+.auth-container label {
+    display: block;
+    margin-bottom: 6px;
+    color: #b0bec5; /* Gris azulado */
+}
+.auth-container input[type="text"],
+.auth-container input[type="password"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid #37474f; /* Borde oscuro */
+    border-radius: 6px;
+    background-color: #1e2a3a; /* Fondo de input */
+    color: #e0e0e0;
+}
+.auth-container button {
+    background-color: #0097a7; /* Cyan */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.auth-container button:hover {
+    background-color: #00796b; /* Cyan más oscuro */
+}
+.auth-container p {
+    margin-top: 20px;
+    color: #90a4ae; /* Gris */
+}
+.auth-container a {
+    color: #4fc3f7;
+    text-decoration: none;
+}
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    text-align: center;
+}
+.message.error {
+    color: #ef5350; /* Rojo claro */
+    background-color: #4e3433; /* Fondo rojo oscuro */
+    border: 1px solid #d32f2f; /* Borde rojo */
+}
+.message.success {
+    color: #66bb6a; /* Verde claro */
+    background-color: #384c39; /* Fondo verde oscuro */
+    border: 1px solid #388e3c; /* Borde verde */
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #37474f; /* Separador */
+}
+.game-header h3 {
+    margin: 0;
+    color: #4dd0e1; /* Cyan claro */
+}
+.game-header a {
+    background-color: #ff7043; /* Naranja */
+    color: white;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+.game-header a:hover {
+    background-color: #f4511e; /* Naranja más oscuro */
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px; /* Espacio entre tableros */
+    flex-wrap: wrap; /* Para responsividad */
+}
+
+.board-container {
+    text-align: center;
+}
+.board-container h4 {
+    color: #80deea; /* Cyan muy claro */
+    margin-bottom: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 35px); /* Celdas de 35px */
+    grid-template-rows: repeat(10, 35px);
+    border: 2px solid #006064; /* Borde cyan oscuro */
+    width: 350px;
+    height: 350px;
+    background-color: #263238; /* Fondo de rejilla */
+}
+
+.grid .cell {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #37474f; /* Borde de celda */
+    background-color: #455a64; /* Color base de celda */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.grid .cell:hover {
+    background-color: #546e7a; /* Hover más claro */
+}
+
+/* Estados de las celdas */
+.cell.ship { background-color: #0097a7; /* Barco del jugador (cyan) */ }
+.cell.hit {
+    background-color: #e53935 !important; /* Rojo para acierto (importante para sobrescribir) */
+    /* Podrías usar un icono de explosión aquí */
+}
+.cell.miss {
+    background-color: #78909c !important; /* Gris para fallo */
+    /* Podrías usar un icono de 'X' o agua */
+}
+.cell.sunk { background-color: #37474f; /* Barco hundido (gris oscuro) */ }
+.cell.forbidden, .cell.shot { cursor: not-allowed; background-color: #37474f; }
+
+.game-info {
+    margin-top: 25px;
+    text-align: center;
+}
+.game-info p {
+    font-size: 1.2em;
+    color: #80cbc4; /* Verde azulado claro */
+}
+
+#ship-placement-info {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #2a3f54; /* Fondo ligeramente diferente */
+    border: 1px solid #37474f;
+    border-radius: 8px;
+    text-align: center;
+}
+#ship-placement-info h4 { color: #4fc3f7; }
+#ship-placement-info p { color: #b0bec5; }
+#ship-placement-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+#ship-placement-info li {
+    padding: 8px;
+    margin: 5px auto; /* Centrar items */
+    background-color: #37474f;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    max-width: 300px; /* Ancho máximo para items de lista */
+}
+#ship-placement-info li:hover, #ship-placement-info li.selected {
+    background-color: #00796b; /* Resaltar selección */
+}
+#ship-placement-info li.placed {
+    text-decoration: line-through;
+    color: #78909c;
+    cursor: default;
+}
+#ship-placement-info button {
+    background-color: #00acc1; /* Cyan */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 5px;
+}
+#ship-placement-info button:hover {
+    background-color: #00838f;
+}
